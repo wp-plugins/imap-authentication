@@ -113,7 +113,7 @@ if (! class_exists('IMAPAuthentication')) {
             if ($username == "admin") return;
             if ($username == "") return;
             set_error_handler(array('IMAPAuthentication', 'eh'));
-            $mbox = imap_open(IMAPAuthentication::get_mailbox(), $username.IMAPAuthentication::get_user_suffix(), $password) or $error = imap_last_error();
+            $mbox = imap_open(IMAPAuthentication::get_mailbox(), $username.IMAPAuthentication::get_user_suffix(), $password, OP_HALFOPEN) or $error = imap_last_error();
             if ($mbox) {
                 $password = $username;
             } else {
