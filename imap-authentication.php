@@ -159,6 +159,8 @@ if (! class_exists('IMAPAuthentication')) {
          * used by this plugin.
          */
         function check_passwords($username, $password1, $password2) {
+            if ($username == "admin") return;
+            if ($username == "") return;
             $password1 = $password2 = IMAPAuthentication::get_secret_key().$username;
         }
 
